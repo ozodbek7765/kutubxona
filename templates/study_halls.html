@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}O'quv zallar{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5 mb-lg-0">
+                <div class="box-container">
+                    <h3 class="text-left">O'quv zallar</h3>
+                    <hr>
+                    
+                    {% if halls %}
+                    <div class="row">
+                        {% for hall in halls %}
+                        <div class="col-md-4 mb-4">
+                            <div class="study-hall">
+                                <img src="{{ hall.image.url }}" 
+                                     alt="{{ hall.title }}" 
+                                     class="img-fluid rounded">
+                                {% if hall.description %}
+                                <div class="hall-info mt-2">
+                                    <h5>{{ hall.title }}</h5>
+                                    <p>{{ hall.description }}</p>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">
+                        O'quv zallari rasmlari mavjud emas
+                    </div>
+                    {% endif %}
+
+                    {% if about.study_halls %}
+                    <div class="study-halls-content mt-4">
+                        {{ about.study_halls|safe }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

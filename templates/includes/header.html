@@ -1,0 +1,33 @@
+{% load static %}
+<div class="header-top">
+    <div class="container">
+        <div class="header-top-content">
+            <ul class="d-flex justify-content-end header-top-nav">
+                <li>
+                    <a href="mailto:{{ contact.email }}">
+                        <img src="{% static 'theme/envelope.svg' %}"> {{ contact.email }}
+                    </a>
+                </li>
+                <li>
+                    <a href="tel:{{ contact.phone }}">
+                        <img src="{% static 'theme/phone-alt.svg' %}"> {{ contact.phone }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<header id="header">
+    <div class="container">
+        <div class="logo">
+            <a href="{% url 'home' %}">
+                <img src="{% static 'img/logo.svg' %}" alt="{{ about.name }}">
+            </a>
+        </div>
+        
+        <nav class="nav-menu">
+            <!-- Menu items -->
+        </nav>
+    </div>
+</header>

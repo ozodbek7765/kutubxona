@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Kutubxona tarixi{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5 mb-lg-0">
+                <div class="box-container">
+                    <h3 class="text-left">Kutubxona tarixi</h3>
+                    <hr>
+                    
+                    {% if about.history_image %}
+                    <div class="text-center mb-4">
+                        <img src="{{ about.history_image.url }}" 
+                             alt="Kutubxona tarixi" 
+                             class="img-fluid rounded"
+                             style="max-width: 600px;">
+                    </div>
+                    {% endif %}
+
+                    <div class="history-content">
+                        {{ about.history|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

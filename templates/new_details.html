@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ news.title }}{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5 mb-lg-0">
+                <div class="box-container">
+                    <h3 class="text-left">{{ news.title }}</h3>
+                    <hr>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div class="n-date d-flex align-items-center time">
+                            <img src="{% static 'theme/clock-news.svg' %}"/>
+                            <span>{{ news.created_at|date:"d.m.Y" }}</span>
+                        </div>
+                        <div class="views">
+                            <i class="icofont-eye"></i> {{ news.views }} marta ko'rildi
+                        </div>
+                    </div>
+
+                    {% if news.image %}
+                    <div class="text-center mb-4">
+                        <img src="{{ news.image.url }}" 
+                             alt="{{ news.title }}" 
+                             class="img-fluid rounded">
+                    </div>
+                    {% endif %}
+
+                    <div class="news-content">
+                        {{ news.content|safe }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

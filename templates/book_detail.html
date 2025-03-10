@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ book.title }}{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <!-- Kategoriyalar -->
+            <div class="col-md-3 mb-5 mb-lg-0">
+                <div class="left-block">
+                    <div class="head d-flex justify-content-between">
+                        <h4>Janrlari</h4>
+                        <span>{{ categories.count }}</span>
+                    </div>
+                    <div class="list-group-categories">
+                        {% for category in categories %}
+                        <li>
+                            <a class="d-flex justify-content-between {% if category.id == book.category.id %}active{% endif %}" 
+                               href="{% url 'library' %}?category={{ category.id }}">
+                                <span>{{ category.name }}</span>
+                                <span>{{ category.book_set.count }}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Kitob ma'lumotlari -->
+            <div class="col-md-9 mb-5 mb-lg-0">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="box-container h-100">
+                            <img src="{{ book.image.url }}" class="img-fluid" alt="{{ book.title }}">
+                            <div class="book-stats mt-3">
+                                <span class="d-block text-center">
+                                    <i class="icofont-eye"></i> {{ book.views }} marta ko'rildi
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="box-container h-100">
+                            <h4 class="mb-3">{{ book.title }}</h4>
+                            <div class="book-meta">
+                                <p><strong>Muallif:</strong> {{ book.author }}</p>
+                                <p><strong>Kategoriyasi:</strong> {{ book.category.name }}</p>
+                                {% if book.publisher %}
+                                    <p><strong>Nashriyot:</strong> {{ book.publisher }}</p>
+                                {% endif %}
+                                {% if book.year %}
+                                    <p><strong>Nashr yili:</strong> {{ book.year }}-yil</p>
+                                {% endif %}
+                                {% if book.isbn %}
+                                    <p><strong>ISBN:</strong> {{ book.isbn }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="book-description mt-4">
+                                {{ book.description|safe }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O'xshash kitoblar -->
+                {% if similar_books %}
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="black-title d-flex flex-wrap justify-content-between align-items-center mb-3">
+                            <span>Shu turdagi boshqa kitoblar</span>
+                        </div>
+                    </div>
+                    {% for book in similar_books %}
+                    <div class="col-md-3 mb-4">
+                        <a href="{% url 'book_detail' book.id %}" class="card h-100">
+                            <img class="card-imga" src="{{ book.image.url }}" alt="{{ book.title }}">
+                            <div class="card-body">
+                                <h6>{{ book.title }}</h6>
+                                <p class="author-book">{{ book.author }}</p>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+function incrementDownloads(bookId) {
+    fetch(`/api/books/${bookId}/increment-downloads/`, {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': '{{ csrf_token }}'
+        }
+    }).then(response => {
+        if (response.ok) {
+            let downloads = document.querySelector('.book-stats .icofont-download').nextSibling;
+            downloads.textContent = parseInt(downloads.textContent) + 1;
+        }
+    });
+}
+</script>
+{% endblock %}

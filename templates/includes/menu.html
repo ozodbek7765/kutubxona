@@ -1,0 +1,31 @@
+{% load static %}
+
+<li class="drop-down">
+    <a href="#">Kutubxona haqida</a>
+    <ul>
+        <li><a href="{% url 'library_history' %}">Kutubxona tarixi</a></li>
+        <li><a href="{% url 'department' %}">Rahbariyat</a></li>
+        <li><a href="{% url 'structure' %}">Tuzilma</a></li>
+        <li><a href="{% url 'study_halls' %}">O'quv zallar</a></li>
+    </ul>
+</li>
+
+<li class="drop-down">
+    <a href="#">Kutubxona faoliyati</a>
+    <ul>
+        <li><a href="{% url 'work_order' %}">Ish tartibi</a></li>
+        <li><a href="{% url 'statistics' %}">Statistik ma'lumotlar</a></li>
+        <li><a href="{% url 'services' %}">Xizmatlar</a></li>
+        <li><a href="{% url 'contacts' %}">Bog'lanish</a></li>
+    </ul>
+</li>
+
+<li class="drop-down">
+    <a href="#">Yangiliklar</a>
+    <ul>
+        <li><a href="{% url 'announcements' %}">E'lonlar</a></li>  
+        <li><a href="{% url 'news' %}">Yangiliklar</a></li>
+    </ul>
+</li>
+
+<li><a href="{% url 'library' %}">Elektron kutubxona</a></li>

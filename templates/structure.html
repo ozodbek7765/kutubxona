@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Tuzilma{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5">
+                <div class="box-container">
+                    <h3 class="text-left">Tuzilma</h3>
+                    <hr>
+                    {% if structure and structure.structure_image %}
+                        <div class="text-center">
+                            <img src="{{ structure.structure_image.url }}" 
+                                 alt="Tashkilot tuzilmasi" 
+                                 class="img-fluid">
+                        </div>
+                    {% else %}
+                        <p class="text-center">Tuzilma rasmi yuklanmagan</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

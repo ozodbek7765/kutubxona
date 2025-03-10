@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bo'sh ish o'rinlari{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5 mb-lg-0">
+                <div class="box-container">
+                    <h3 class="text-left">Bo'sh ish o'rinlari</h3>
+                    <hr>
+
+                    {% if vacancies %}
+                        {% for vacancy in vacancies %}
+                        <div class="vacancy-item mb-4">
+                            <h4 class="vacancy-title">{{ vacancy.title }}</h4>
+                            <div class="vacancy-details">
+                                <p><strong>Ma'lumoti:</strong> {{ vacancy.education }}</p>
+                                <p><strong>Stavka:</strong> {{ vacancy.workload }}</p>
+                                <p><strong>Ish haqi:</strong> {{ vacancy.salary }}</p>
+                                
+                                {% if vacancy.requirements %}
+                                <div class="vacancy-requirements mt-3">
+                                    <p><strong>Talablar:</strong></p>
+                                    {{ vacancy.requirements|safe }}
+                                </div>
+                                {% endif %}
+
+                                {% if vacancy.description %}
+                                <div class="vacancy-description mt-3">
+                                    {{ vacancy.description|safe }}
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% if not forloop.last %}<hr>{% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <div class="alert alert-info">
+                            Hozirda bo'sh ish o'rinlari mavjud emas
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

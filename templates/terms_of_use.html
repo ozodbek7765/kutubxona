@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Foydalanish shartlari{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5 mb-lg-0">
+                <div class="box-container">
+                    <h3 class="text-left">Foydalanish shartlari</h3>
+                    <hr>
+                    
+                    {% if about.work_order %}
+                    <div class="terms-content">
+                        {{ about.work_order|safe }}
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">
+                        Foydalanish shartlari haqida ma'lumot mavjud emas
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

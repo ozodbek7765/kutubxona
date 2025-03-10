@@ -1,0 +1,327 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000">
+    <title>{% block title %}{% endblock %} - Arnasoy tuman AKM</title>
+    <meta content="Jizzax viloyati Arnasoy tuman AKM kutubxonasi rasmiy veb sayti" name="description">
+
+    <!-- Favicons -->
+    <link href="{% static 'img/logo.png' %}" rel="icon">
+
+    <!-- Vendor CSS Files -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        .goog-te-banner-frame,
+        .goog-te-gadget-icon,
+        .goog-tooltip,
+        .goog-tooltip:hover,
+        .goog-te-gadget-simple,
+        .goog-te-balloon-frame,
+        .goog-te-gadget span {
+            display: none !important;
+        }
+
+        .goog-te-gadget {
+            height: 0 !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        body {
+            top: 0 !important;
+        }
+
+        .skiptranslate,
+        .goog-te-banner-frame {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="header-top">
+        <div class="container">
+            <div class="header-top-content">
+                <div class="d-flex justify-content-between align-items-center">
+                    <!-- Til tanlash -->
+                    <div class="language-switcher">
+                        <div class="current-lang" onclick="toggleLanguageDropdown()">
+                            <img src="{% static 'img/flags/uz.png' %}" alt="O'zbek" id="current-flag">
+                            <span id="current-lang-name">O'zbek</span>
+                        </div>
+                        <div class="lang-dropdown" id="langDropdown">
+                            <div class="lang-option" onclick="setLanguage('uz')">
+                                <img src="{% static 'img/flags/uz.png' %}" alt="O'zbek">
+                                <span>O'zbek</span>
+                            </div>
+                            <div class="lang-option" onclick="setLanguage('ru')">
+                                <img src="{% static 'img/flags/ru.png' %}" alt="Русский">
+                                <span>Русский</span>
+                            </div>
+                            <div class="lang-option" onclick="setLanguage('en')">
+                                <img src="{% static 'img/flags/en.png' %}" alt="English">
+                                <span>English</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Kontakt ma'lumotlari -->
+                    <ul class="d-flex header-top-nav">
+                        <li><a href="mailto:{{ contact.email }}"><img src="{% static 'theme/envelope.svg' %}"> {{ contact.email }}</a></li>
+                        <li><a href="tel:{{ contact.phone }}"><img src="{% static 'theme/phone-alt.svg' %}"> {{ contact.phone }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <header id="header">
+        <div class="container d-flex align-items-center">
+            <a href="{% url 'home' %}" class="logo mr-auto">
+                <img src="{% static 'img/logo.svg' %}" alt="{{ about.name }}">
+            </a>
+
+            <nav class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="drop-down">
+                        <a href="#">Kutubxona haqida</a>
+                        <ul>
+                            <li><a href="{% url 'library_history' %}">Kutubxona tarixi</a></li>
+                            <li><a href="{% url 'department' %}">Rahbariyat</a></li>
+                            <li><a href="{% url 'structure' %}">Tuzilma</a></li>
+                            <li><a href="{% url 'study_halls' %}">O'quv zallar</a></li>
+                            <li><a href="{% url 'vacancies' %}">Bo'sh ish o'rinlari</a></li>
+                        </ul>
+                    </li>
+                    <li class="drop-down">
+                        <a href="#">Kutubxona faoliyati</a>
+                        <ul>
+                            <li><a href="{% url 'work_order' %}">Ish tartibi</a></li>
+                            <li><a href="{% url 'statistics' %}">Kutubxona faoliyatiga doir statistik ma'lumotlar</a></li>
+                            <li><a href="{% url 'terms_of_use' %}">Foydalanish shartlari</a></li>
+                            <li><a href="{% url 'services' %}">Xizmatlar</a></li>
+                            <li><a href="{% url 'contacts' %}">Bog'lanish</a></li>
+                        </ul>
+                    </li>
+                    <li class="drop-down">
+                        <a href="#">Yangiliklar</a>
+                        <ul>
+                            <li><a href="{% url 'news' %}">Yangiliklar</a></li>
+                            <li><a href="{% url 'announcements' %}">E'lonlar</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'library' %}">Elektron kutubxona</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="footer-info">
+                            <h3>{{ about.name }}</h3>
+                            <p>{{ contact.address|safe }}</p>
+                            <!-- Search qismi -->
+                            <div class="footer-search mt-3">
+                                <h4>Kitob qidirish</h4>
+                                <form action="{% url 'library' %}" method="get" class="search-form">
+                                    <div class="input-group">
+                                        <input type="text" 
+                                               name="search" 
+                                               class="form-control" 
+                                               placeholder="Kitob nomi, muallif, ISBN..."
+                                               value="{{ request.GET.search|default:'' }}">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="submit">
+                                                <i class="icofont-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="footer-links">
+                                    <h4>Foydali havolalar</h4>
+                                    <ul>
+                                        <li><a href="{% url 'library' %}">Elektron kutubxona</a></li>
+                                        <li><a href="{% url 'news' %}">Yangiliklar</a></li>
+                                        <li><a href="{% url 'announcements' %}">E'lonlar</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-4">
+                                <div class="footer-contact">
+                                    <h4>Bog'lanish</h4>
+                                    <p>{{ contact.address|safe }}<br>
+                                    <strong>Tel:</strong> {{ contact.phone }}<br>
+                                    <strong>Email:</strong> {{ contact.email }}<br>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="copyright">
+                &copy; {% now 'Y' %} — <strong>{{ about.name }}</strong>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'vendor/aos/aos.js' %}"></script>
+
+    <!-- Template Main JS File -->
+    <script src="{% static 'js/main.js' %}"></script>
+
+    <div id="google_translate_element" style="display:none"></div>
+    <script type="text/javascript">
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+                pageLanguage: 'uz',
+                includedLanguages: 'en,ru,uz',
+                autoDisplay: false,
+            }, 'google_translate_element');
+        }
+
+        function toggleLanguageDropdown() {
+            document.getElementById('langDropdown').classList.toggle('show');
+        }
+
+        function doGoogleLanguageTranslate(lang) {
+            var select = document.querySelector('select.goog-te-combo');
+            if (select) {
+                select.value = lang;
+                if (select.fireEvent) {
+                    select.fireEvent('onchange');
+                } else {
+                    var evt = document.createEvent('HTMLEvents');
+                    evt.initEvent('change', false, true);
+                    select.dispatchEvent(evt);
+                }
+            }
+        }
+
+        function setLanguage(lang) {
+            // Tanlangan tilni saqlash
+            localStorage.setItem('selectedLanguage', lang);
+            
+            // Google translate cookie ni tekshirish
+            var currentTrans = document.cookie.match('(^|;)\\s*googtrans\\s*=\\s*([^;]+)');
+            currentTrans = currentTrans ? decodeURIComponent(currentTrans[2]) : '/uz/uz';
+
+            if (lang === 'uz') {
+                if (currentTrans === '/uz/uz') {
+                    return;
+                }
+                // O'zbek tili uchun tarjimani o'chirish
+                var frame = document.querySelector('.goog-te-banner-frame');
+                if (frame) {
+                    frame.contentDocument.querySelector('.goog-close-link').click();
+                }
+                // Tarjima cookielarini tozalash
+                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=' + location.hostname;
+                document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; domain=.' + location.hostname;
+                
+                location.reload();
+            } else {
+                // Boshqa tillar uchun tarjima
+                var select = document.querySelector('.goog-te-combo');
+                if (select) {
+                    select.value = lang;
+                    var event = new Event('change', { bubbles: true });
+                    select.dispatchEvent(event);
+                }
+            }
+            
+            // UI yangilash
+            updateLanguageUI(lang);
+        }
+
+        function updateLanguageUI(lang) {
+            const flags = {
+                'uz': '{% static "img/flags/uz.png" %}',
+                'ru': '{% static "img/flags/ru.png" %}',
+                'en': '{% static "img/flags/en.png" %}'
+            };
+            const names = {
+                'uz': 'O\'zbek',
+                'ru': 'Русский',
+                'en': 'English'
+            };
+            
+            document.getElementById('current-flag').src = flags[lang];
+            document.getElementById('current-lang-name').textContent = names[lang];
+            document.getElementById('langDropdown').classList.remove('show');
+        }
+
+        // Sahifa yuklanganda
+        document.addEventListener('DOMContentLoaded', function() {
+            // Saqlangan tilni olish
+            const savedLanguage = localStorage.getItem('selectedLanguage') || 'uz';
+            
+            // Google Translate elementini kutish
+            var checkCount = 0;
+            var checkInterval = setInterval(function() {
+                var select = document.querySelector('.goog-te-combo');
+                if (select || checkCount > 50) {
+                    clearInterval(checkInterval);
+                    if (select && savedLanguage !== 'uz') {
+                        setLanguage(savedLanguage);
+                    }
+                }
+                checkCount++;
+            }, 100);
+        });
+
+        // Tashqi click uchun handler
+        document.addEventListener('click', function(e) {
+            var dropdown = document.getElementById('langDropdown');
+            var switcher = document.querySelector('.language-switcher');
+            
+            if (!switcher.contains(e.target) && dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        });
+    </script>
+
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+</html>

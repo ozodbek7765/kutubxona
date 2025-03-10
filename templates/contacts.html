@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Bog'lanish{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5 mb-lg-0">
+                <div class="box-container">
+                    <h3 class="text-left mb-4">Biz bilan bog'lanish</h3>
+                    
+                    <div class="row mb-4">
+                        <!-- Manzil va kontakt ma'lumotlari -->
+                        <div class="col-md-6">
+                            <div class="contact-info mb-4">
+                                <h4 class="mb-3">Manzil</h4>
+                                {{ contact.address|safe }}
+                            </div>
+                            
+                            <div class="contact-info">
+                                <h4 class="mb-3">Murojaat uchun</h4>
+                                <p><i class="icofont-phone"></i> {{ contact.phone }}</p>
+                                <p><i class="icofont-envelope"></i> {{ contact.email }}</p>
+                                <p><i class="icofont-clock-time"></i> {{ contact.work_hours }}</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Xarita -->
+                        <div class="col-md-6">
+                            {{ contact.location_map|safe }}
+                        </div>
+                    </div>
+
+                    <!-- Ijtimoiy tarmoqlar -->
+                    {% with social_links=contact.get_social_links %}
+                    {% if social_links %}
+                    <div class="row mt-4">
+                        <div class="col-md-12">
+                            <h4 class="mb-3">Ijtimoiy tarmoqlar</h4>
+                            <div class="social-links">
+                                {% for name, url in social_links.items %}
+                                <a href="{{ url }}" class="{{ name }}" target="_blank">
+                                    <i class="icofont-{{ name }}"></i> 
+                                    {{ name|title }}
+                                </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

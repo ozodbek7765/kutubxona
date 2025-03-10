@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Rahbariyat{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5 mb-lg-0">
+                <div class="box-container">
+                    <h3 class="text-left">Rahbariyat</h3>
+                    <hr>
+                    {% for staff in staff_list %}
+                    <div class="staff-member">
+                        <div class="text-center mb-4">
+                            <h4>{{ staff.full_name }}</h4>
+                            <h5 class="text-primary">{{ staff.position }}</h5>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <img src="{{ staff.image.url }}" alt="{{ staff.full_name }}" 
+                                     class="img-fluid rounded mb-3" style="max-width: 260px;">
+                                
+                                <div class="contact-info text-left">
+                                    <p><strong>Aloqa ma'lumotlari:</strong></p>
+                                    <p><strong>Telefon:</strong> {{ staff.phone }}</p>
+                                    <p><strong>Email:</strong> <a href="mailto:{{ staff.email }}">{{ staff.email }}</a></p>
+                                    <p><strong>Qabul kunlari:</strong><br>{{ staff.reception_days }}</p>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="staff-bio">
+                                    {{ staff.bio|safe }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if not forloop.last %}
+                        <hr class="my-5">
+                    {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

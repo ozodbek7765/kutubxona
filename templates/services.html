@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Xizmatlar{% endblock %}
+
+{% block content %}
+<section id="featured-services" class="featured-services mt-3 mb-3">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mb-5 mb-lg-0">
+                <div class="box-container">
+                    <h3 class="text-left">Kutubxona xizmatlari</h3>
+                    <hr>
+
+                    {% if services %}
+                    <div class="row">
+                        {% for service in services %}
+                        <div class="col-md-4 mb-4">
+                            <div class="service-box">
+                                {% if service.icon %}
+                                <div class="service-icon">
+                                    <img src="{{ service.icon.url }}" alt="{{ service.title }}">
+                                </div>
+                                {% endif %}
+                                <h4>{{ service.title }}</h4>
+                                <div class="service-description">
+                                    {{ service.description|safe }}
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <div class="alert alert-info">
+                        Xizmatlar haqida ma'lumot mavjud emas
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

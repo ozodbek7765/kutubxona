@@ -1,0 +1,36 @@
+{% load static %}
+<div class="row align-items-center mt-2 mb-3">
+    <div class="col-lg-4 col-md-4 mb-1">
+        <a href="{% url 'home' %}">
+            <img src="{% static 'img/logo.svg' %}" style="width: 80%;" class="img-fluid" alt="{{about.name}}">
+        </a>
+    </div>
+    <div class="col-lg-8 col-md-8">
+        <form action="{% url 'search' %}" method="get">
+            <div class="input-group input-group-lg">
+                <input type="text" name="q" class="form-control" placeholder="Qidirish..." value="{{ request.GET.q }}">
+                <button class="btn btn-outline-secondary" type="submit">
+                    <i class="icofont-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="footer-top">
+    <!-- Footer top content -->
+</div>
+
+<div class="row">
+    <div class="col-md-3 footer-items">
+        <a href="#" class="footer-items-title pb-3">Kutubxona haqida</a>
+        <ul class="footer-items-ul mb-2">
+            <li><a href="{% url 'library_history' %}">Kutubxona tarixi</a></li>
+            <li><a href="{% url 'department' %}">Rahbariyat</a></li>
+            <li><a href="{% url 'structure' %}">Tuzilma</a></li>
+            <li><a href="{% url 'study_halls' %}">O'quv zallar</a></li>
+        </ul>
+    </div>
+    
+    <!-- Qolgan footer menular shu tartibda davom etadi -->
+</div>
