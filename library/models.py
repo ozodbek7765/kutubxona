@@ -122,7 +122,7 @@ class Management(models.Model):
     phone = models.CharField("Telefon", max_length=100)
     email = models.EmailField("Email", max_length=255, null=True, blank=True)
     bio = RichTextField("Ma'lumot", blank=True, null=True)
-    image = models.ImageField("Rasm", upload_to='management/')
+    image = models.ImageField("Rasm", upload_to='management/', null=True, blank=True)
 
     def __str__(self):
         return self.full_name
@@ -137,7 +137,7 @@ class About(models.Model):
     history = RichTextField("Kutubxona tarixi")
     history_image = models.ImageField("Tarix uchun rasm", upload_to='about/', blank=True)
     mission = RichTextField("Kutubxona vazifasi")
-    structure_image = models.ImageField("Tuzilma rasmi", upload_to='about/')
+    structure_image = models.ImageField("Tuzilma rasmi", upload_to='about/', null=True, blank=True)
     management = models.ManyToManyField(Management, verbose_name="Rahbarlar")
     study_halls = RichTextField("O'quv zallar haqida")
     work_order = RichTextField("Ish tartibi")

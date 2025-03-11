@@ -24,20 +24,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
-import environ
-import os
 
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+SECRET_KEY = 'django-insecure-twf^ghla)9sor%ftqo+kzv%nqci=uignrod2n^%d(a6&-j*au^'
 
-SECRET_KEY = env("SECRET_KEY")
-DEBUG = env.bool("DEBUG", default=False)
-DATABASES = {
-    "default": env.db(),
-}
 
 ALLOWED_HOSTS = ['*']
 
+DEBUG = True
 
 # Application definition
 
@@ -88,12 +81,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://postgres:mdHZxigADxNyJSmEetoBaWDOggBAzxiX@nozomi.proxy.rlwy.net:14625/railway',
-        engine='django.db.backends.postgresql'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3', 
+    }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -142,7 +134,7 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'
