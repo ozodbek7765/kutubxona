@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Category, Book, News, Staff, Slider, Announcement, Structure,
-    StudyHall, Service, Vacancy, Contact, About, Management
+    StudyHall, Service, Vacancy, Contact, About, Management, Statistics
 )
 admin.site.site_header = "Arnasoy tuman AKM"
 admin.site.site_title = "Arnasoy AKM admin"
@@ -41,8 +41,12 @@ class StaffAdmin(admin.ModelAdmin):
 
 @admin.register(Slider)
 class SliderAdmin(admin.ModelAdmin):
-    list_display = ['title', 'order']
+    list_display = ['id', 'get_title', 'order']
     list_editable = ['order']
+    
+    def get_title(self, obj):
+        return f"Slayder {obj.id}"
+    get_title.short_description = 'Nomi'
 
 @admin.register(Announcement)
 class AnnouncementAdmin(admin.ModelAdmin):
@@ -81,3 +85,8 @@ class ContactAdmin(admin.ModelAdmin):
 class AboutAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return not About.objects.exists()
+
+@admin.register(Statistics)
+class StatisticsAdmin(admin.ModelAdmin):
+    def has_add_permission(self, request):
+        return not Statistics.objects.exists()

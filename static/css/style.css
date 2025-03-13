@@ -772,6 +772,10 @@ section {
   color: #fff;
 }
 
+.featured-services {
+  background: #f8f9fa;
+}
+
 /*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
@@ -1465,14 +1469,7 @@ padding: 30px;
     background: #fff;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0,0,0,0.1);
-}
-
-.box-container h3 {
-    color: #043F93;
-    font-weight: 500;
-    font-size: 24px;
-    margin-bottom: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
 }
 
 .library .card-body {
@@ -2279,4 +2276,228 @@ body {
 
 .footer-search .input-group-append {
     margin-left: 0;
+}
+
+/* Foydali havolalar section */
+.section-usefull {
+    padding: 50px 0;
+    background: #f8f9fa;
+}
+
+.section-usefull .card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    margin: 10px 5px;
+    padding: 15px;
+}
+
+.section-usefull .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.section-usefull .card-imga {
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.section-usefull .card-title {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    color: #333;
+}
+
+/* Owl Carousel Custom Navigation */
+.owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+.owl-prev, .owl-next {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.owl-prev {
+    left: -20px;
+}
+
+.owl-next {
+    right: -20px;
+}
+
+/* Owl Carousel Custom Styles */
+.owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    background: #fff !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+.owl-prev {
+    left: -20px;
+}
+
+.owl-next {
+    right: -20px;
+}
+
+/* Statistics Page Styles */
+.stat-box {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.stat-box h2 {
+    color: #106eea;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.stat-box p {
+    color: #444;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Statistics Section Styles */
+.section-statis {
+    padding: 50px 0;
+    background: #f8f9fa;
+}
+
+.stat-box {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.stat-box h2.counter {
+    color: #106eea;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.stat-box p {
+    color: #444;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .stat-box {
+        margin-bottom: 20px;
+    }
+    
+    .stat-box h2.counter {
+        font-size: 2rem;
+    }
+}
+
+/* Slider Section */
+.slider-section {
+    padding: 20px 0;
+}
+
+.slider-section .owl-carousel .item img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.slider-section .owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.8) !important;
+    border-radius: 50% !important;
+}
+
+.slider-section .owl-prev {
+    left: -20px;
+}
+
+.slider-section .owl-next {
+    right: -20px;
+}
+
+.slider-section .owl-carousel .item {
+    position: relative;
+}
+
+.slider-section .owl-carousel .item img {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.slider-section .owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.8) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.slider-section .owl-prev {
+    left: 20px;
+}
+
+.slider-section .owl-next {
+    right: 20px;
+}
+
+.slider-section .owl-dots {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.slider-section .owl-dot span {
+    width: 10px;
+    height: 10px;
+    margin: 5px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 50%;
+    display: block;
+}
+
+.slider-section .owl-dot.active span {
+    background: #fff;
 }

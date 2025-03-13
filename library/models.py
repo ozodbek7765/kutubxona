@@ -68,21 +68,17 @@ class Announcement(models.Model):
         ordering = ['-created_at']
 
 class Statistics(models.Model):
-    books = models.CharField(max_length=255, verbose_name="Umumiy kitoblar")
-    journals = models.CharField(max_length=255, verbose_name="Jurnallar")
-    newspapers = models.CharField(max_length=255, verbose_name="Gazetalar")
-    disks = models.CharField(max_length=255, verbose_name="Elektron disk")
-    users = models.CharField(max_length=255, verbose_name="Foydalanuvchilar")
-    members = models.CharField(max_length=255, verbose_name="A'zolar")
-    give_books = models.CharField(max_length=255, verbose_name="Kitob berilishi")
-
+    total_books = models.CharField("Kutubxona fondi", max_length=100)
+    new_books = models.CharField("Yangi kelgan adabiyotlar", max_length=100) 
+    total_readers = models.CharField("Kitobxonlar soni", max_length=100)
+    new_readers = models.CharField("Yangi kitobxonlar", max_length=100)
+    
     def __str__(self):
         return "Statistik ma'lumotlar"
 
     class Meta:
         verbose_name = "Statistika"
         verbose_name_plural = "Statistika"
-
 
 class Staff(models.Model):
     full_name = models.CharField("F.I.O", max_length=255)
@@ -141,7 +137,6 @@ class About(models.Model):
     management = models.ManyToManyField(Management, verbose_name="Rahbarlar")
     study_halls = RichTextField("O'quv zallar haqida")
     work_order = RichTextField("Ish tartibi")
-    statistics = RichTextField("Statistik ma'lumotlar")
 
     def __str__(self):
         return self.name
@@ -189,13 +184,11 @@ class Contact(models.Model):
         verbose_name_plural = "Bog'lanish ma'lumotlari"
 
 class Slider(models.Model):
-    title = models.CharField("Sarlavha", max_length=255)
-    description = RichTextField("Tavsif")
     image = models.ImageField("Rasm", upload_to='sliders/')
     order = models.IntegerField("Tartib raqami", default=0)
     
     def __str__(self):
-        return self.title
+        return f"Slayder {self.id}"
 
     class Meta:
         verbose_name = "Slayder"

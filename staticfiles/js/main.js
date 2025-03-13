@@ -280,4 +280,43 @@
     aos_init();
   });
 
+  $(document).ready(function() {
+    // Header slider
+    $(".header-slider").owlCarousel({
+        items: 1,
+        loop: true,
+        nav: true,
+        dots: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        smartSpeed: 1000,
+        animateOut: 'fadeOut'
+    });
+
+    // Foydali havolalar carousel
+    $("#corucel-owl").owlCarousel({
+        loop: true,
+        margin: 20,
+        nav: true,
+        dots: false,
+        autoplay: true,
+        autoplayTimeout: 3000,
+        autoplayHoverPause: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            576: {
+                items: 2
+            },
+            768: {
+                items: 3
+            },
+            992: {
+                items: 4
+            }
+        }
+    });
+  });
+
 })(jQuery);

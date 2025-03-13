@@ -17,6 +17,8 @@
     <link href="{% static 'vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
     <link href="{% static 'vendor/aos/aos.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
 
     <!-- Template Main CSS File -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -166,11 +168,14 @@
                         <div class="row">
                             <div class="col-lg-4">
                                 <div class="footer-links">
-                                    <h4>Foydali havolalar</h4>
+                                    <h4>Kutubxona haqida</h4>
                                     <ul>
+                                        <li><a href="{% url 'library_history' %}">Kutubxona tarixi</a></li>
+                                        <li><a href="{% url 'department' %}">Rahbariyat</a></li>
+                                        <li><a href="{% url 'structure' %}">Tuzilma</a></li>
+                                        <li><a href="{% url 'study_halls' %}">O'quv zallar</a></li>
+                                        <li><a href="{% url 'vacancies' %}">Bo'sh ish o'rinlari</a></li>
                                         <li><a href="{% url 'library' %}">Elektron kutubxona</a></li>
-                                        <li><a href="{% url 'news' %}">Yangiliklar</a></li>
-                                        <li><a href="{% url 'announcements' %}">E'lonlar</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -205,6 +210,99 @@
     <script src="{% static 'vendor/jquery.easing/jquery.easing.min.js' %}"></script>
     <script src="{% static 'vendor/owl.carousel/owl.carousel.min.js' %}"></script>
     <script src="{% static 'vendor/aos/aos.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $("#corucel-owl").owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>'],
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 4
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- Template Main JS File qismidan oldin -->
+    <script>
+        $(document).ready(function() {
+            $("#corucel-owl").owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    576: {
+                        items: 2
+                    },
+                    768: {
+                        items: 3
+                    },
+                    992: {
+                        items: 4
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $("#slider-carousel").owlCarousel({
+                items: 1,
+                loop: true,
+                nav: true,
+                dots: true,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                smartSpeed: 1000,
+                animateOut: 'fadeOut',
+                navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>']
+            });
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            $("#slider-carousel").owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 0,
+                nav: true,
+                dots: false,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                smartSpeed: 1000,
+                slideTransition: 'linear',
+                navText: ['<i class="fas fa-chevron-left"></i>', '<i class="fas fa-chevron-right"></i>']
+            });
+        });
+    </script>
 
     <!-- Template Main JS File -->
     <script src="{% static 'js/main.js' %}"></script>

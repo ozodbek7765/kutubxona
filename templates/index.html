@@ -7,61 +7,125 @@
 <!-- Slider Section -->
 <section class="slider-section">
     <div class="container">
-        <div class="owl-carousel header-slider">
+        {% if sliders %}
+        <div class="owl-carousel owl-theme" id="slider-carousel">
             {% for slider in sliders %}
-            <div class="item-slider">
-                <img src="{{ slider.image.url }}" class="img-fluid" alt="{{ slider.title }}" loading="lazy">
-                <div class="slider-content">
-                    <h2>{{ slider.title }}</h2>
-                    {{ slider.description|safe }}
-                </div>
+            <div class="item">
+                <img src="{{ slider.image.url }}" alt="Slider {{ slider.id }}">
             </div>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
 </section>
 
-<!-- Yangiliklar Section -->
+<!-- Yangiliklar -->
 <section class="section section-news">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="black-title d-flex flex-wrap justify-content-between align-items-center mt-30 mb-3">
                     <span>So'nggi yangiliklar</span>
-                    <a href="{% url 'news' %}" class="btn-more">Barchasi</a>
+                    <a href="{% url 'news' %}">Barcha yangiliklar</a>
                 </div>
             </div>
             {% for news in latest_news %}
             <div class="col-md-4 mb-5">
-                <div class="card h-100">
+                <a href="{% url 'news_detail' news.id %}" class="card h-100">
                     <img class="card-imga" src="{{ news.image.url }}" alt="{{ news.title }}">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-2">
                             <div class="n-date d-flex align-items-center time">
-                                <img src="{% static 'theme/clock-news.svg' %}"/>
-                                <span>{{ news.created_at|date:"d.m.Y" }}</span>
+                                <img src="{% static 'theme/clock-news.svg' %}">
+                                <span>{{ news.created_at|date:"m-d-Y" }}</span>
                             </div>
-                            <div class="views">
-                                <i class="icofont-eye"></i> {{ news.views }}
+                            <div class="n-date d-flex align-items-center time">
+                                <img src="{% static 'theme/eye.svg' %}">
+                                <span>{{ news.views }}</span>
                             </div>
                         </div>
                         <h6 class="card-title">{{ news.title }}</h6>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
     </div>
 </section>
 
-<!-- Announcements Section -->
+<!-- E'lonlar -->
 <section class="section section-news">
-    <!-- E'lonlar section kodlari -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="black-title d-flex flex-wrap justify-content-between align-items-center mt-30 mb-3">
+                    <span>E'lonlar</span>
+                    <a href="{% url 'announcements' %}">Barcha e'lonlar</a>
+                </div>
+            </div>
+            {% for announcement in announcements %}
+            <div class="col-md-4 mb-5">
+                <a href="{% url 'announcement_detail' announcement.id %}" class="card h-100">
+                    <img class="card-imga" src="{{ announcement.image.url }}" alt="{{ announcement.title }}">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="n-date d-flex align-items-center time">
+                                <img src="{% static 'theme/clock-news.svg' %}">
+                                <span>{{ announcement.created_at|date:"m-d-Y" }}</span>
+                            </div>
+                            <div class="n-date d-flex align-items-center time">
+                                <img src="{% static 'theme/eye.svg' %}">
+                                <span>{{ announcement.views }}</span>
+                            </div>
+                        </div>
+                        <h6 class="card-title">{{ announcement.title }}</h6>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 </section>
 
-<!-- Statistics Section -->
+<!-- Statistika -->
 <section class="section section-statis">
-    <!-- Statistika section kodlari -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="black-title d-flex flex-wrap justify-content-between align-items-center mt-30 mb-3">
+                    <span>Statistik ko'rsatkichlar</span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3 mb-4">
+                        <div class="stat-box text-center p-4">
+                            <h2 class="counter">{{ statistics.total_books }}</h2>
+                            <p class="mb-0">Kutubxona fondi</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="stat-box text-center p-4">
+                            <h2 class="counter">{{ statistics.new_books }}</h2>
+                            <p class="mb-0">Yangi kelgan adabiyotlar</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="stat-box text-center p-4">
+                            <h2 class="counter">{{ statistics.total_readers }}</h2>
+                            <p class="mb-0">Kitobxonlar soni</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-4">
+                        <div class="stat-box text-center p-4">
+                            <h2 class="counter">{{ statistics.new_readers }}</h2>
+                            <p class="mb-0">Yangi kitobxonlar</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
 <!-- Kitoblar Section -->
@@ -89,4 +153,52 @@
         </div>
     </div>
 </section>
+
+<!-- Foydali havolalar -->
+<section class="section section-usefull">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="black-title d-flex flex-wrap justify-content-between align-items-center mt-30 mb-30">
+                    <span>Foydali havolalar</span>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="owl-carousel owl-theme" id="corucel-owl">
+                    <a href="https://president.uz" class="card h-100 d-flex">
+                        <img class="card-imga" src="{% static 'img/logo.png' %}" alt="O'zbekiston Respublikasi Prezidenti">
+                        <div class="card-body">
+                            <h6 class="card-title">O'zbekiston Respublikasi Prezidenti</h6>
+                        </div>
+                    </a>
+                    <a href="https://gov.uz" class="card h-100 d-flex">
+                        <img class="card-imga" src="{% static 'img/logo.png' %}" alt="O'zbekiston Respublikasining Hukumat portali">
+                        <div class="card-body">
+                            <h6 class="card-title">O'zbekiston Respublikasining Hukumat portali</h6>
+                        </div>
+                    </a>
+                    <a href="https://parliament.gov.uz" class="card h-100 d-flex">
+                        <img class="card-imga" src="{% static 'img/logo.png' %}" alt="O'zbekiston Respublikasi Oliy Majlis">
+                        <div class="card-body">
+                            <h6 class="card-title">O'zbekiston Respublikasi Oliy Majlis</h6>
+                        </div>
+                    </a>
+                    <a href="https://my.gov.uz" class="card h-100 d-flex">
+                        <img class="card-imga" src="{% static 'img/logo.png' %}" alt="Yagona interaktiv davlat xizmatlari portali">
+                        <div class="card-body">
+                            <h6 class="card-title">Yagona interaktiv davlat xizmatlari portali</h6>
+                        </div>
+                    </a>
+                    <a href="https://lex.uz" class="card h-100 d-flex">
+                        <img class="card-imga" src="{% static 'img/logo.png' %}" alt="Qonun hujjatlari milliy bazasi">
+                        <div class="card-body">
+                            <h6 class="card-title">Qonun hujjatlari milliy bazasi</h6>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

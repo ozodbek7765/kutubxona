@@ -5,7 +5,7 @@ from django.db.models import F
 from .models import (
     Announcement, Book, Category, Search,
     News, About, Contact, Staff, 
-    StudyHall, Service, Slider, Vacancy, Structure
+    StudyHall, Service, Slider, Vacancy, Structure, Statistics
 )
 
 class BaseContextMixin:
@@ -25,9 +25,10 @@ class HomeView(BaseContextMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['latest_books'] = Book.objects.select_related('category').all()[:6]
         context['sliders'] = Slider.objects.all().order_by('order')
         context['announcements'] = Announcement.objects.all()[:3]
+        context['latest_books'] = Book.objects.all().order_by('-created_at')[:6]
+        context['statistics'] = Statistics.objects.first()
         return context
 
 class NewsListView(BaseContextMixin, ListView):
@@ -167,6 +168,11 @@ class LibraryHistoryView(BaseContextMixin, TemplateView):
 
 class StatisticsView(BaseContextMixin, TemplateView):
     template_name = 'statistics.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['statistics'] = Statistics.objects.first()
+        return context
 
 class TermsOfUseView(BaseContextMixin, TemplateView):
     template_name = 'terms_of_use.html'

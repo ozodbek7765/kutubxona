@@ -2280,3 +2280,79 @@ body {
 .footer-search .input-group-append {
     margin-left: 0;
 }
+
+/* Foydali havolalar section */
+.section-usefull {
+    padding: 50px 0;
+    background: #f8f9fa;
+}
+
+.section-usefull .card {
+    transition: all 0.3s ease;
+    border: 1px solid #e9ecef;
+    margin: 10px 5px;
+    padding: 15px;
+}
+
+.section-usefull .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.section-usefull .card-imga {
+    height: 80px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.section-usefull .card-title {
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    color: #333;
+}
+
+/* Owl Carousel Custom Navigation */
+.owl-nav {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+.owl-prev, .owl-next {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #fff !important;
+    border-radius: 50% !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.owl-prev {
+    left: -20px;
+}
+
+.owl-next {
+    right: -20px;
+}
+
+/* Owl Carousel Custom Styles */
+.owl-nav button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50% !important;
+    background: #fff !important;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
+}
+
+.owl-prev {
+    left: -20px;
+}
+
+.owl-next {
+    right: -20px;
+}
